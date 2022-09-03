@@ -20,13 +20,13 @@ const displayNews = (allNews, dataLimit) => {
 
     const newsContainer = document.getElementById('news-btn');
 
-    newsContainer.innerHTML = '';
+    //newsContainer.innerHTML = '';
     const navbarNewDiv = document.createElement('div');
     navbarNewDiv.innerHTML = `
     <nav class="navbar bg-base-100">
         <div class="">
             <div class="dropdown">
-                <label tabindex="0" class="btn btn-ghost lg:hidden">
+                <label tabindex="0" class=" lg:hidden btn btn-ghost ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -34,7 +34,7 @@ const displayNews = (allNews, dataLimit) => {
                     </svg>
                 </label>
                 <ul tabindex="0"
-                    class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-56">
                     <li><button>Home</button></li>
                     <li><button>Breaking News</button></li>
                     <li><button>Regular news</button></li>
@@ -48,23 +48,23 @@ const displayNews = (allNews, dataLimit) => {
             </div>
         </div>
         <div class="w-full hidden lg:flex">
-            <ul class="menu menu-horizontal p-0 lg:container lg:mx-auto">
-                <li class="lg:mr-16"><button ">Home</button></li>
-                <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[0].category_id}')">${allNews[0].category_name}</button></li>
-                <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[1].category_id}')">${allNews[1].category_name}</button></li>
-                <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[2].category_id}')">${allNews[2].category_name}</button></li>
-                <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[3].category_id}')">${allNews[3].category_name}</button></li>
-                <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[4].category_id}')">${allNews[4].category_name}</button></li>
-                <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[5].category_id}')">${allNews[5].category_name}</button></li>
-                <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[6].category_id}')">${allNews[6].category_name}</button></li>
-                <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[7].category_id}')">${allNews[7].category_name}</button></li>
-            </ul>
-        </div>
-    </nav>
-    `;
+        <ul class="menu menu-horizontal p-0 lg:container lg:mx-auto">
+            <li class="lg:mr-16"><button ">Home</button></li>
+            <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[0].category_id}')">${allNews[0].category_name}</button></li>
+            <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[1].category_id}')">${allNews[1].category_name}</button></li>
+            <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[2].category_id}')">${allNews[2].category_name}</button></li>
+            <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[3].category_id}')">${allNews[3].category_name}</button></li>
+            <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[4].category_id}')">${allNews[4].category_name}</button></li>
+            <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[5].category_id}')">${allNews[5].category_name}</button></li>
+            <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[6].category_id}')">${allNews[6].category_name}</button></li>
+            <li class="lg:mr-16"><button onclick="loadNewsDetails('${allNews[7].category_id}')">${allNews[7].category_name}</button></li>
+        </ul>
+    </div>
+</nav>
+`;
     newsContainer.appendChild(navbarNewDiv);
     
-    // console.log(news);
+    //console.log(news);
     
 
 }
@@ -81,10 +81,8 @@ const loadNewsDetails = async category_id => {
 
 const displaynewsDetails = idNumber => {
     const totalNewsAmount = document.getElementById('total')
-    totalNewsAmount.innerText =idNumber.length;
-    // console.log(idNumber);
-    
-    const newsShows = document.getElementById('news-container');
+    totalNewsAmount.innerText =idNumber.length;    
+    const newsShows = document.getElementById('news-section');
     newsShows.innerHTML = '';
     idNumber.forEach(news => {
         // console.log(news);
@@ -94,8 +92,10 @@ const displaynewsDetails = idNumber => {
             <figure><img class="w-96" src="${news.thumbnail_url}" alt="Album"></figure>
             <div class="card-body">
                     <h2 class="card-title">${news.title}</h2>
-                    <p>${news.details} </p>
-                    <div class="card-actions justify-between items-center mt-8 lg:mt-0">
+                    <p class="overflow-hidden h-52">${news.details} </p>
+                    <p class="truncate w-36">${news.details} </p>
+
+                    <div class="card-actions justify-between items-center lg:mt-0 mt-8 ">
                         <div class="flex mb-10 lg:mb-0">
                             <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                                 <div class="w-10 rounded-full">
@@ -119,31 +119,59 @@ const displaynewsDetails = idNumber => {
 
                             <p class="ml-3"> ${news.total_view}M</p>
                         </div>
-                        <label for="my-modal-3" class="btn modal-button"><i class="fa-solid fa-arrow-right"></i></label>
+                        
+                        <label onclick="newsDetails('${news._id}')" for="my-modal-3" class="btn modal-button">
+                        <i class="fa-solid fa-arrow-right">
+                        </i>
+                        </label>
                     </div>
             </div>
         </div>
-
     `;
-        newsShows.appendChild(newsDiv);
-        
-
+    newsShows.appendChild(newsDiv);  
     });
     toggleSpinner(false);
-    
+    //spiner stoped
 
 }
-
-
+// loader section
 const toggleSpinner = isLoading =>{
     const loaderSection = document.getElementById('loader');
     if(isLoading){
-      loaderSection.classList.remove('hidden');
+        loaderSection.classList.remove('hidden');
     }
     else{
-      loaderSection.classList.add('hidden');
+        loaderSection.classList.add('hidden');
     }
-  }
-  
+}
+
+//    modal 
+const newsDetails = async news_id => {
+    const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    newsModalDetails(data.data[0]);
+}
+
+const newsModalDetails = newsModal => {
+    //console.log(newsModal);
+    const imageDisplay = document.getElementById('modal-div');
+    imageDisplay.innerHTML = `
+    <img class="w-full" src="${newsModal.thumbnail_url}" alt="Album">
+    `;
+    const modalTitle = document.getElementById('newsDetails');
+    modalTitle.innerText = newsModal.title;
+
+    const authorName = document.getElementById('author-name');
+    authorName.innerText = newsModal.author.name;
+
+    const datePublised = document.getElementById('data-publised');
+    datePublised.innerText = newsModal.author?.published_date;
+}
+
+
+
+
+
 loadNewsDetails();
 loadNews();

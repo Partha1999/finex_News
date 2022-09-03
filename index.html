@@ -11,77 +11,79 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Finex News</title>
 </head>
-<body>
-    <header class="lg:my-4 px-4 mt-4">
-        <nav class="navbar">
-            <div class="navbar-start">
-                <p class="text-xl lg:ml-5 font-bold"><span class="text-blue-400">Finex
-                    </span> News</p>
+<html>
+    <body>
+        <header class="lg:my-4 px-4 mt-4">
+            <nav class="navbar">
+                <div class="navbar-start">
+                    <p class="text-xl lg:ml-5 font-bold"><span class="text-blue-400">Finex
+                        </span> News</p>
+                </div>
+                <div class="navbar-end lg:flex lg:mr-8">
+                    <ul class="menu menu-horizontal p-0">
+                        <li class="font-bold"><button>News</button></li>
+                        <li class="font-bold" ><button>Blog</button></li>
+                        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                            <div class="w-10 rounded-full ">
+                                <img src="images/images.png" />
+                            </div>
+                        </label>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <hr class="hidden lg:block">
+        <header id="news-btn" class=" lg:my-4">
+        
+        </header>
+        <div id="loader" class="text-center hidden">
+            <div role="status" >
+                <svg class="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                </svg>
+                <span class="sr-only">Loading...</span>
             </div>
-            <div class="navbar-end lg:flex lg:mr-8">
-                <ul class="menu menu-horizontal p-0">
-                    <li class="font-bold"><button>News</button></li>
-                    <li class="font-bold" ><button>Blog</button></li>
-                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                        <div class="w-10 rounded-full ">
-                            <img src="images/images.png" />
-                        </div>
-                    </label>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <hr class="hidden lg:block">
-    <header id="news-btn" class=" lg:my-4">
-    
-    </header>
-    <div id="loader" class="text-center hidden">
-        <div role="status" >
-            <svg class="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-            </svg>
-            <span class="sr-only">Loading...</span>
         </div>
-    </div>
-    <hr class="lg:hidden ">
-    <main class="lg:container lg:mx-auto  my-10">
-        <section class="px-10 lg:px-0 mb-10">
-            <div
-                class=" lg:pl-8 h-14 text-xl rounded-md w-full flex items-center justify-center lg:justify-start bg-gray-600">
-                <p><span id="total">0</span> items found here</p>
-            </div>
-        </section>
-        <section class=" flex mt-7 lg:flex items-center justify-between lg:px-0 px-10">
-            <div class="lg:flex items-center lg:justify-between">
-                <p class="mr-6 mt-3 lg:mt-0 mb-8 lg:mb-0">Short By View: </p>
-                <ul class="menu menu-horizontal p-0 bg-gray-600  rounded-md">
-                    <li tabindex=" 0">
-                        <button>
-                            Default
-                            <svg class=" fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24">
-                                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                            </svg>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <div class="flex flex-col  lg:flex lg:flex-row lg:items-center lg:justify-between">
-                <button class="btn bg-sky-500/100 text-orange-200  lg:mr-6 mb-6 lg:mb-0">Today's News</button>
-                <button class="btn btn-outline btn-info">Trending</button>
-            </div>
-        </section>
-        <section id="news-container" class="mt-10 p-5  rounded-xl">
-
-            
-
-        </section>
-        <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+        <hr class="lg:hidden">
+        <main class="lg:container lg:mx-auto  my-10">
+            <section class="px-10 lg:px-0 mb-10">
+                <div
+                    class=" lg:pl-8 h-14 text-xl rounded-md w-full flex items-center justify-center lg:justify-start bg-gray-600">
+                    <p><span id="total">0</span> items found here</p>
+                </div>
+            </section>
+            <section class=" flex mt-7 lg:flex items-center justify-between lg:px-0 px-10">
+                <div class="lg:flex items-center lg:justify-between">
+                    <p class="mr-6 mt-3 lg:mt-0 mb-8 lg:mb-0">Short By View: </p>
+                    <ul class="p-0 bg-gray-600 menu menu-horizontal rounded-md">
+                        <li tabindex=" 0">
+                            <button>
+                                Default
+                                <svg class=" fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    viewBox="0 0 24 24">
+                                    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                                </svg>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex flex-col  lg:flex lg:flex-row lg:items-center lg:justify-between">
+                    <button class="btn bg-sky-500/100 text-orange-200  lg:mr-6 mb-6 lg:mb-0">Today's News</button>
+                    <button class="btn btn-outline btn-info">Trending</button>
+                </div>
+            </section>
+            <section id="news-section" class="bg-base-200 rounded-xlmt-10 p-5 ">
+    
+                <!-- Card Design -->
+    
+            </section>
+            <!-- modal -->
+            <input type="checkbox" id="my-modal-3" class="modal-toggle" />
         <div class="modal">
             <div class="modal-box relative">
                 <figure id="modal-div" class="mb-4">
-
+                    
                 </figure>
                 <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                 <h3 id="newsDetails" class="text-lg font-bold mb-4"></h3>
@@ -90,23 +92,25 @@
             </div>
         </div>
 
-    </main>
-    <footer class="flex justify-center bg-black py-10">
-        <section class="">
-            <p class="mb-5 text-white"><i>CEO of Finex News &copy; <span class="text-purple-300">Partha Protim Majumder</span>
-                    2022</i></p>
-            <ul class="flex justify-evenly">
-                <li class="text-3xl"><a class="" href="https://www.facebook.com/Parthaprotimmajumder01/"
-                        target="_blank"><i class="fa-brands fa-facebook text-blue-400 hover:text-blue-800"></i></a>
-                </li>
-                <li class=" text-3xl"><a class="" href="https://www.instagram.com/partha___protim___majumder/?hl=en"
-                        target="_blank"><i class="fa-brands fa-instagram text-red-500 hover:text-rose-700"></i></a>
-                </li>
-                
-            </ul>
-        </section>
-    </footer>
-
-    <script src="js/finexNews.js"></script>
+        </main>
+        
+        <footer class="flex justify-center bg-black py-10">
+            <section class="">
+                <p class="mb-5 text-white"><i>CEO of Finex News &copy; <span class="text-purple-300">Partha Protim Majumder</span>
+                        2022</i></p>
+                <ul class="flex justify-evenly">
+                    <li class="text-3xl"><a class="" href="https://www.facebook.com/Parthaprotimmajumder01/"
+                            target="_blank"><i class="fa-brands fa-facebook text-blue-400 hover:text-blue-800"></i></a>
+                    </li>
+                    <li class=" text-3xl"><a class="" href="https://www.instagram.com/partha___protim___majumder/?hl=en"
+                            target="_blank"><i class="fa-brands fa-instagram text-red-500 hover:text-rose-700"></i></a>
+                    </li>
+                    
+                </ul>
+            </section>
+        </footer>
+    
+        <script src="js/finexNews.js"></script>
+    </body>
 </body>
 </html>
