@@ -63,12 +63,14 @@ const displayNews = (allNews, dataLimit) => {
     </nav>
     `;
     newsContainer.appendChild(navbarNewDiv);
+    
     // console.log(news);
     
 
 }
 // done -1
 const loadNewsDetails = async category_id => {
+    toggleSpinner(true);
     const url = ` https://openapi.programming-hero.com/api/news/category/${category_id}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -76,6 +78,8 @@ const loadNewsDetails = async category_id => {
 }
 
 const displayPhoneDetails = idNumber => {
+    const totalNewsAmount = document.getElementById('total')
+    totalNewsAmount.innerText =idNumber.length;
     // console.log(idNumber);
     
     const newsShows = document.getElementById('news-container');
@@ -113,13 +117,6 @@ const displayPhoneDetails = idNumber => {
 
                             <p class="ml-3"> ${news.total_view}M</p>
                         </div>
-                        <div class="rating">
-                            <input type="radio" name="rating-1" class="mask mask-star" />
-                            <input type="radio" name="rating-1" class="mask mask-star" checked />
-                            <input type="radio" name="rating-1" class="mask mask-star" />
-                            <input type="radio" name="rating-1" class="mask mask-star" />
-                            <input type="radio" name="rating-1" class="mask mask-star" />
-                        </div>
                         <label for="my-modal-3" class="btn modal-button"><i class="fa-solid fa-arrow-right"></i></label>
                     </div>
             </div>
@@ -127,11 +124,21 @@ const displayPhoneDetails = idNumber => {
 
     `;
         newsShows.appendChild(phoneDiv);
-        toggleSpinner(true);
+        
 
     });
-
+    toggleSpinner(false);
+    
 
 }
+const toggleSpinner = isLoading =>{
+    const loaderSection = document.getElementById('loader');
+    if(isLoading){
+      loaderSection.classList.remove('hidden');
+    }
+    else{
+      loaderSection.classList.add('hidden');
+    }
+  }
 loadNewsDetails();
 loadNews();
