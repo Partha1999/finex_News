@@ -12,8 +12,8 @@
     <title>Finex News</title>
 </head>
 <html>
-    <body>
-        <header class="lg:my-4 px-4 mt-4">
+    <body class="">
+        <header class="lg:my-0 px-4 mt-4">
             <nav class="navbar">
                 <div class="navbar-start">
                     <p class="text-xl lg:ml-5 font-bold"><span class="text-blue-400">Finex
@@ -21,8 +21,8 @@
                 </div>
                 <div class="navbar-end lg:flex lg:mr-8">
                     <ul class="menu menu-horizontal p-0">
-                        <li class="font-bold"><button>News</button></li>
-                        <li class="font-bold" ><button>Blog</button></li>
+                        <li class="font-bold text-neutral-900"><button>News</button></li>
+                        <li id="btn-blog" class="text-neutral-900 font-bold" ><button>Blog</button></li>
                         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                             <div class="w-10 rounded-full ">
                                 <img src="images/images.png" />
@@ -36,7 +36,7 @@
         <header id="news-btn" class=" lg:my-4">
         
         </header>
-        <div id="loader" class="text-center hidden">
+        <div id="blue-loader" class="text-center hidden">
             <div role="status" >
                 <svg class="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
@@ -49,7 +49,7 @@
         <main class="lg:container lg:mx-auto  my-10">
             <section class="px-10 lg:px-0 mb-10">
                 <div
-                    class=" lg:pl-8 h-14 text-xl rounded-md w-full flex items-center justify-center lg:justify-start bg-gray-600">
+                    class=" lg:pl-8 h-14 text-xl rounded-md w-full flex items-center justify-center lg:justify-start bg-green-200">
                     <p><span id="total">0</span> items found here</p>
                 </div>
             </section>
@@ -58,7 +58,7 @@
                     <p class="mr-6 mt-3 lg:mt-0 mb-8 lg:mb-0">Short By View: </p>
                     <ul class="p-0 bg-gray-600 menu menu-horizontal rounded-md">
                         <li tabindex=" 0">
-                            <button>
+                            <button class=" btn bg-sky-500/100 bg-blue-200 text-ghost ">
                                 Default
                                 <svg class=" fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24">
@@ -73,7 +73,7 @@
                     <button class="btn btn-outline btn-info">Trending</button>
                 </div>
             </section>
-            <section id="news-section" class="bg-base-200 rounded-xlmt-10 p-5 ">
+            <section id="news-section" class=" rounded-xlmt-10 p-5 mt-5">
     
                 <!-- Card Design -->
     
@@ -91,8 +91,39 @@
                 <h3>Publish Date: <span id="data-publised"></span></h3>
             </div>
         </div>
+<!-- question answer part -->
+
+            <section id="qa-section" class=" hidden text-center"> 
+                <div id="load" class="container-fluid text-neutral-900"  > 
+                    <h2 class="font-bold">  FAQ Section .</h2> 
+                    <div class="according"> 
+                        <div class="icon"></div> 
+                        <h5>1.What is the difference between Var,Let,Const?</h5> 
+                    </div> 
+                    <div class="panel"> 
+                        <p>The scope of a var variable is functional scope.  The scope of a let variable is block scope. The scope of a const variable is block scope</p> 
+                    </div> 
+     
+                    <div class="according"> 
+                        <div class="icon"></div> 
+                        <h5>2.What is the difference between arrow and regular function?</h5> 
+                    </div> 
+                    <div class="panel"> 
+                        <p>object inside the regular functions contains the list of arguments.The arrow function, on the opposite, doesn’t define arguments i.e. they do not have arguments binding</p> 
+                    </div> 
+     
+                    <div class="according"> 
+                        <div class="icon"></div> 
+                        <h5>3.why we use template string ?</h5> 
+                    </div> 
+                    <div class="panel"> 
+                        <p>Template literals are sometimes informally called template strings, because they are used most commonly for string interpolation (to create strings by doing substitution of placeholders).</p> 
+                    </div> 
+                </div> 
+            </section>
 
         </main>
+
         
         <footer class="flex justify-center bg-black py-10">
             <section class="">

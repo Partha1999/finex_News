@@ -7,14 +7,14 @@ const loadNews = async (search, dataLimit) => {
         const url = `https://openapi.programming-hero.com/api/news/categories`
         const res = await fetch(url);
         const data = await res.json();
-        displayNews(data.data.news_category, dataLimit);
+        displayNewsSection(data.data.news_category, dataLimit);
     }
     catch {
 
     }
 }
 
-const displayNews = (allNews, dataLimit) => {
+const displayNewsSection = (allNews, dataLimit) => {
     
 
 
@@ -23,7 +23,7 @@ const displayNews = (allNews, dataLimit) => {
     //newsContainer.innerHTML = '';
     const navbarNewDiv = document.createElement('div');
     navbarNewDiv.innerHTML = `
-    <nav class="navbar bg-base-100">
+    <nav class="navbar bg-cyan-100">
         <div class="">
             <div class="dropdown">
                 <label tabindex="0" class=" lg:hidden btn btn-ghost ">
@@ -136,7 +136,7 @@ const displaynewsDetails = idNumber => {
 }
 // loader section
 const toggleSpinner = isLoading =>{
-    const loaderSection = document.getElementById('loader');
+    const loaderSection = document.getElementById('blue-loader');
     if(isLoading){
         loaderSection.classList.remove('hidden');
     }
@@ -167,11 +167,30 @@ const newsModalDetails = newsModal => {
 
     const datePublised = document.getElementById('data-publised');
     datePublised.innerText = newsModal.author?.published_date;
+    
 }
 
 
+// blog button
 
 
 
 loadNewsDetails();
 loadNews();
+
+
+
+document.getElementById('btn-blog').addEventListener('mouseover',function(){ 
+ 
+    const hideBtn = document.getElementById('qa-section'); 
+ 
+    hideBtn.classList.remove('hidden'); 
+ 
+})
+document.getElementById('btn-blog').addEventListener('mouseout',function(){ 
+ 
+    const hideBtn = document.getElementById('qa-section'); 
+ 
+    hideBtn.classList.add('hidden'); 
+ 
+})
