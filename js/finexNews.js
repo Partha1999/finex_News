@@ -117,7 +117,7 @@ const displaynewsDetails = idNumber => {
             </div>
         </div>
     `;
-    newsShows.appendChild(newsDiv);  
+    newsShows.appendChild(newsDiv); 
     });
     toggleSpinner(false);
     //spiner stoped
