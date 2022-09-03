@@ -2,7 +2,7 @@
 
 // https://openapi.programming-hero.com/api/news/categories
 
-const loadNews = async (search, dataLimit) => {
+const loadedNews = async ( dataLimit) => {
     try {
         const url = `https://openapi.programming-hero.com/api/news/categories`
         const res = await fetch(url);
@@ -14,7 +14,7 @@ const loadNews = async (search, dataLimit) => {
     }
 }
 
-const displayNewsSection = (allNews, dataLimit) => {
+const displayNewsSection = (allNews) => {
     
 
 
@@ -103,8 +103,8 @@ const displaynewsDetails = idNumber => {
                                 </div>
                             </label>
                             <div class="ml-2 lg:ml-5">
-                                <p>${news.author.name}</p>
-                                <p>${news.author.published_date}</p>
+                                <p>${news.author.name ? news.author.name:'No Author'}</p>
+                                <p>${news.author.published_date ? news.author.published_date : 'No Published Date'}</p>
                             </div>
                         </div>
 
@@ -117,10 +117,10 @@ const displaynewsDetails = idNumber => {
                                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
 
-                            <p class="ml-3"> ${news.total_view}M</p>
+                            <p class="ml-3"> ${news.total_view ? news.total_view:'No Views'}</p>
                         </div>
                         
-                        <label onclick="newsDEtailsInfo('${news._id}')" for="mm-3" class="btn modal-button">
+                        <label onclick="newsDetailsInfo('${news._id}')" for="mm-3" class="btn modal-button">
                         <i class="fa-solid fa-arrow-right">
                         </i>
                         </label>
@@ -132,7 +132,6 @@ const displaynewsDetails = idNumber => {
     });
     toggleSpinner(false);
     //spiner stoped
-
 }
 // loader section
 const toggleSpinner = isLoading =>{
@@ -146,7 +145,7 @@ const toggleSpinner = isLoading =>{
 }
 
 //    modal 
-const newsDEtailsInfo = async news_id => {
+const newsDetailsInfo = async news_id => {
     const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -157,29 +156,28 @@ const newsModalInfo = newsModal => {
     console.log(newsModal);
     const imageDisplay = document.getElementById('modal-div');
     imageDisplay.innerHTML = `
-    <img class="w-full" src="${newsModal.thumbnail_url}" alt="Album">
-    `;
-    const modalTitle = document.getElementById('newsDEtailsInfo');
+    <img class="w-full" src="${newsModal.thumbnail_url}" alt="Album">`;
+    const modalTitle = document.getElementById('newsDetailsInfo');
     modalTitle.innerText = newsModal.title;
 
     const authorName = document.getElementById('author-name');
     authorName.innerText = newsModal.author.name;
 
     const datePublised = document.getElementById('data-publised');
-    datePublised.innerText = newsModal.author.published_date;
+    datePublised.innerText = newsModal.author?.published_date;
     
 }
 
 
-// blog button
+
 
 
 
 loadNewsDetails();
-loadNews();
+loadedNews();
 
 
-
+// blog button
 document.getElementById('btn-blog').addEventListener('mouseover',function(){ 
  
     const hideBtn = document.getElementById('qa-section'); 
