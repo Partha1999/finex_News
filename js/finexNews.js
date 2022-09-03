@@ -120,7 +120,7 @@ const displaynewsDetails = idNumber => {
                             <p class="ml-3"> ${news.total_view}M</p>
                         </div>
                         
-                        <label onclick="newsDetails('${news._id}')" for="my-modal-3" class="btn modal-button">
+                        <label onclick="newsDEtailsInfo('${news._id}')" for="mm-3" class="btn modal-button">
                         <i class="fa-solid fa-arrow-right">
                         </i>
                         </label>
@@ -146,27 +146,27 @@ const toggleSpinner = isLoading =>{
 }
 
 //    modal 
-const newsDetails = async news_id => {
+const newsDEtailsInfo = async news_id => {
     const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
     const res = await fetch(url);
     const data = await res.json();
-    newsModalDetails(data.data[0]);
+    newsModalInfo(data.data[0]);
 }
 
-const newsModalDetails = newsModal => {
-    //console.log(newsModal);
+const newsModalInfo = newsModal => {
+    console.log(newsModal);
     const imageDisplay = document.getElementById('modal-div');
     imageDisplay.innerHTML = `
     <img class="w-full" src="${newsModal.thumbnail_url}" alt="Album">
     `;
-    const modalTitle = document.getElementById('newsDetails');
+    const modalTitle = document.getElementById('newsDEtailsInfo');
     modalTitle.innerText = newsModal.title;
 
     const authorName = document.getElementById('author-name');
     authorName.innerText = newsModal.author.name;
 
     const datePublised = document.getElementById('data-publised');
-    datePublised.innerText = newsModal.author?.published_date;
+    datePublised.innerText = newsModal.author.published_date;
     
 }
 
