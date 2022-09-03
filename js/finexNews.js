@@ -1,8 +1,4 @@
-
-
-// https://openapi.programming-hero.com/api/news/categories
-
-const loadedNews = async ( dataLimit) => {
+const loadNews = async ( dataLimit) => {
     try {
         const url = `https://openapi.programming-hero.com/api/news/categories`
         const res = await fetch(url);
@@ -19,8 +15,6 @@ const displayNewsSection = (allNews) => {
 
 
     const newsContainer = document.getElementById('news-btn');
-
-    //newsContainer.innerHTML = '';
     const navbarNewDiv = document.createElement('div');
     navbarNewDiv.innerHTML = `
     <nav class="navbar bg-cyan-100">
@@ -64,12 +58,8 @@ const displayNewsSection = (allNews) => {
 `;
     newsContainer.appendChild(navbarNewDiv);
     
-    //console.log(news);
-    
 
 }
-
-// done -1
 const loadNewsDetails = async category_id => {
     toggleSpinner(true);
     const url = ` https://openapi.programming-hero.com/api/news/category/${category_id}`;
@@ -78,14 +68,13 @@ const loadNewsDetails = async category_id => {
     const sortBy = await data.data.sort((a, b) => b.total_view - a.total_view);
     displaynewsDetails(sortBy);
 }
-
+//displaying dynamic value
 const displaynewsDetails = idNumber => {
     const totalNewsAmount = document.getElementById('total')
     totalNewsAmount.innerText =idNumber.length;    
     const newsShows = document.getElementById('news-section');
     newsShows.innerHTML = '';
     idNumber.forEach(news => {
-        // console.log(news);
         const newsDiv = document.createElement('div');
         newsDiv.innerHTML = `
         <div class="card lg:card-side bg-base-200 shadow-xl mb-7">
@@ -103,7 +92,7 @@ const displaynewsDetails = idNumber => {
                                 </div>
                             </label>
                             <div class="ml-2 lg:ml-5">
-                                <p>${news.author.name ? news.author.name:'No Author'}</p>
+                                <p>${news.author.name ? news.author.name:'No Author'}</p> 
                                 <p>${news.author.published_date ? news.author.published_date : 'No Published Date'}</p>
                             </div>
                         </div>
