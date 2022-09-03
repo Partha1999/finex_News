@@ -68,16 +68,18 @@ const displayNews = (allNews, dataLimit) => {
     
 
 }
+
 // done -1
 const loadNewsDetails = async category_id => {
     toggleSpinner(true);
     const url = ` https://openapi.programming-hero.com/api/news/category/${category_id}`;
     const res = await fetch(url);
     const data = await res.json();
-    displayPhoneDetails(data.data);
+    const sortBy = await data.data.sort((a, b) => b.total_view - a.total_view);
+    displaynewsDetails(sortBy);
 }
 
-const displayPhoneDetails = idNumber => {
+const displaynewsDetails = idNumber => {
     const totalNewsAmount = document.getElementById('total')
     totalNewsAmount.innerText =idNumber.length;
     // console.log(idNumber);
@@ -86,8 +88,8 @@ const displayPhoneDetails = idNumber => {
     newsShows.innerHTML = '';
     idNumber.forEach(news => {
         // console.log(news);
-        const phoneDiv = document.createElement('div');
-        phoneDiv.innerHTML = `
+        const newsDiv = document.createElement('div');
+        newsDiv.innerHTML = `
         <div class="card lg:card-side bg-base-200 shadow-xl mb-7">
             <figure><img class="w-96" src="${news.thumbnail_url}" alt="Album"></figure>
             <div class="card-body">
@@ -123,7 +125,7 @@ const displayPhoneDetails = idNumber => {
         </div>
 
     `;
-        newsShows.appendChild(phoneDiv);
+        newsShows.appendChild(newsDiv);
         
 
     });
@@ -131,6 +133,8 @@ const displayPhoneDetails = idNumber => {
     
 
 }
+
+
 const toggleSpinner = isLoading =>{
     const loaderSection = document.getElementById('loader');
     if(isLoading){
@@ -140,5 +144,6 @@ const toggleSpinner = isLoading =>{
       loaderSection.classList.add('hidden');
     }
   }
+  
 loadNewsDetails();
 loadNews();
